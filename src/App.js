@@ -4,25 +4,37 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import Quote from "./Quote.js";
+import "./Work.css";
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      on: false
+    };
+  }
+
+  handleClick = () => {
+    this.setState({ on: !this.state.on });
+    
+  };
+
   render() {
+    const work = this.state.on ? 'homerISworking' : 'homerISsippinAdrink';
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Simpsons Quotes</h1>
+          <img src="https://seeklogo.com/images/S/Simpsons-logo-FB21A7C03F-seeklogo.com.png" className="App-logo" alt="logo" />
+          <h1 className="App-title">Is Homer working ?</h1>
+          <div className="Workin">
+        <button 
+        onClick={this.handleClick}
+        className={work}>{work.toUpperCase()}</button>
+        <figure className={work} />
+      </div>
         </header>
-        <Quote
-          quote="I believe the children are the future... Unless we stop them now!"
-          character="Homer Simpson"
-          image="https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FHomerSimpson.png?1497567511939"
-        />
-        <Quote
-          quote="Me fail English? That's unpossible"
-          character="Ralph Wiggum"
-          image="https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FRalphWiggum.png?1497567511523"
-        />
+
       </div>
     );
   }
